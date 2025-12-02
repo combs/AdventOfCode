@@ -1,0 +1,10 @@
+Starting registers: A 64012472 B 0 C 0 PC 0
+0 BST Save last 3 bits of combo operand A to B ... 2 - 4
+2 BXL Xor B and literal 7, storing to B ... 1 - 7
+4 CDV Divide A by 2^combo operand B storing to C ... 7 - 5
+6 ADV Divide A by 2^combo operand 3 storing to A ... 0 - 3
+8 BXL Xor B and literal 7, storing to B ... 1 - 7
+10 BXC Xor B and C to B, ignoring operand ... 4 - 1
+12 OUT Output combo operand B ... 5 - 5
+14 JNZ Jump to PC operand if A is nonzero ... 3 - 0
+
