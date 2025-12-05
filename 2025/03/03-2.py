@@ -9,19 +9,22 @@ def recurse(nums_so_far, candidates):
     if (12 - len(nums_so_far)) > len(candidates): 
         return None
     if len(nums_so_far)==12:
-        print("sum", sum(nums_so_far), "maxed out", nums_so_far)
-        return sum(nums_so_far)
+        # print(nums_so_far)
+        total = int("".join([str(i) for i in nums_so_far]))
+        # print("concatenated", total, "maxed out", str(nums_so_far))
+        return total
+
     results = []
     for index, num in enumerate(candidates):
         result = recurse(nums_so_far + [num], candidates[index+1:])
         if result is not None:
             results.append(result)
-    print("Best score is", max(results))
+    # print("Best score is", max(results))
     return max(results)
 
 with open(sys.argv[1], "r") as fh:
     for line in fh.readlines():
-        nums = list(pattern.parse_string(line))
+        nums = [int(i) for i in pattern.parse_string(line)]
         biggest = 0
         biggest = recurse([], nums)
         print("biggest found in", line.strip(), "is", biggest)
