@@ -15,12 +15,16 @@ def recurse(nums_so_far, candidates):
         return total
 
     results = []
-    for index, num in enumerate(candidates):
+    temp_sorted = enumerate(candidates)
+    temp_sorted = sorted(temp_sorted, key=lambda item: item[1], reverse=True)
+
+    for index, num in temp_sorted:
+        
         result = recurse(nums_so_far + [num], candidates[index+1:])
         if result is not None:
-            results.append(result)
-    # print("Best score is", max(results))
-    return max(results)
+            return result
+
+    return None
 
 with open(sys.argv[1], "r") as fh:
     for line in fh.readlines():
